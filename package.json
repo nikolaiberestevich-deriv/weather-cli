@@ -17,5 +17,9 @@
     "cli"
   ],
   "author": "Nikolai Berestevich",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "dedent-js": "^1.0.1"
+  }
 }
