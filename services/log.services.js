@@ -2,10 +2,10 @@ import chalk from 'chalk'
 import dedent from 'dedent-js'
 
 export const printError = (error) => {
-    console.log(chunk.bgRed`ERROR: ` + error)
+    console.log(chalk.bgRed`ERROR: ` + error)
 }
 export const printMessage = (message) => {
-    console.log(chunk.bgRed`Message: ` + message)
+    console.log(chalk.bgGreenBright`Message: ` + message)
 }
 
 export const printHelp = () => {

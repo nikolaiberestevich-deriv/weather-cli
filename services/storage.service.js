@@ -3,7 +3,7 @@ import { join } from 'path'
 import { promises } from 'fs'
 // import { basename, dirname, extname, relative, isAbsolute, resolve, sep } from 'path'
 
-const filePath = join(homedir(), "weather-data.json")
+const filePath = join(homedir(), 'weather-data.json')
 //join = combines path for different OS 
 //homedir() = returns home directiry for different OS
 // console.log(basename(filePath)) // returns file or folder of our path
@@ -14,6 +14,11 @@ const filePath = join(homedir(), "weather-data.json")
 // console.log(resolve(".."))// returns absolute path with added routes (../ in example)
 // console.log(sep())// returns separator of the current OS
 
+const TOKEN_DICTIONARY = {
+    token: "token",
+    city: "city"
+}
+
 const isExist = async (path) => {
     try {
         await promises.stat(path) //.stat() method is used to return information about 
@@ -21,12 +26,12 @@ const isExist = async (path) => {
         //can be used as fsPromises.stat(path)
         return true
     }
-    catch {
+    catch (e) {
         return false
     }
 }
 
-const saveKeyValue = (key, value) => {
+const saveKeyValue = async (key, value) => {
     let data = {}
     if (await isExist(filePath)) {
         const file = await promises.readFile(filePath)
@@ -39,10 +44,10 @@ const saveKeyValue = (key, value) => {
 const getKeyValue = async (key) => {
     if (await isExist(filePath)) {
         const file = await promises.readFile(filePath)
-        data = JSON.parse(file)
+        const data = JSON.parse(file)
         return data[key]
     }
     return undefined
 }
 
-export { saveKeyValue, getKeyValue }
+export { saveKeyValue, getKeyValue, TOKEN_DICTIONARY }
