@@ -17,7 +17,7 @@ const saveToken = async (token) => {
     }
 }
 
-const weatherCli = async () => {
+const weatherCli = () => {
 
     const args = getArgs(process.argv)
     if (args.h) {
@@ -29,7 +29,7 @@ const weatherCli = async () => {
     if (args.t) {
         saveToken(args.t)
     }
-    console.log(await getWeather("minsk"))
+    return getWeather("minsk")
 }
 
 await weatherCli()
