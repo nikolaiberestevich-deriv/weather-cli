@@ -16,7 +16,21 @@ const saveToken = async (token) => {
         printError(e.message)
     }
 }
-
+const getForecast = async () => {
+    try {
+        const weather = await getWeather(process.env.CITY)
+        console.log(weather);
+    } catch (e) {
+        if (e?.responce?.status === "404") {
+            printError("city was not found")
+        } else if (e?.responce?.status === "401") {
+            printError("token was not found")
+        }
+        else {
+            printError(e.message)
+        }
+    }
+}
 const weatherCli = () => {
 
     const args = getArgs(process.argv)
@@ -29,7 +43,7 @@ const weatherCli = () => {
     if (args.t) {
         saveToken(args.t)
     }
-    return getWeather("minsk")
+    getForecast()
 }
 
-await weatherCli()
+weatherCli()
