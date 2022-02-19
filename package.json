@@ -8,7 +8,7 @@
   },
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "node weather.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -18,6 +18,10 @@
   ],
   "author": "Nikolai Berestevich",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xybaks/weather-cli"
+  },
   "dependencies": {
     "axios": "^0.26.0",
     "chalk": "^5.0.0",
